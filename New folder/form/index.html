@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    a {
+      color: black;
+      text-decoration: none;
+    }
+    .marquee {
+      width: 150px;
+      height: 300px;
+      overflow: hidden;
+      position: relative;
+      border: 0px solid #333;
+    }
+    .marquee-content {
+      display: flex;
+        flex-direction: column;
+        animation: slide 10s linear infinite;
+    }
+    .marquee-content img {
+      width: 100%;
+    }
+    @keyframes slide {
+        0% {
+            transform: translateY(100%);
+        }
+
+        100% {
+            transform: translateY(-100%);
+        }
+    }
+  </style>
+  <body>
+    <div>
+      <table
+        width="100%"
+        border="1px solid"
+        style="background-color: antiquewhite; border-collapse: collapse"
+      >
+        <tr style="height: 100px">
+          <td style="width: 100px">
+            <img src="logo.jpg" width="100px" />
+          </td>
+          <td colspan="4" width="100%">
+            <nav style="display: flex; justify-content: space-around; align-items: center;">
+              <a>Home</a>
+              <a>About</a>
+              <a>Services</a>
+            </nav>
+          </td>
+        </tr>
+        <tr>
+          <td width="100px">
+            <img src="logo-2.jpg" width="100px" />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
+              maiores corrupti officia ea aspernatur distinctio, dolores
+              doloribus ab voluptates ipsa molestiae cum placeat. Voluptate
+              quibusdam aspernatur voluptates animi necessitatibus nostrum
+              quaerat, cumque beatae magnam, corrupti, magni nobis? Ea, quas
+              sint.
+            </p>
+          </td>
+          <td width="1300px">
+            <img
+              src="pic-1.jpg"
+              width="550px"
+              style="margin-left: 400px; margin-top: -100px"
+            />
+            <p style="margin-left: 200px; margin-right: 200px">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+              culpa repellat autem repellendus quia labore nesciunt, et
+              laudantium id, sed asperiores, animi atque sunt placeat aspernatur
+              consequatur! Veniam, tenetur labore.
+            </p>
+            <button
+              style="
+                margin-left: 600px;
+                background-color: whitesmoke;
+                border: 1px solid black;
+              "
+            >
+              Submit
+            </button>
+          </td>
+          <td width="100px">
+            <h3 style="margin-top: -155px;">Advertisement</h3>
+            <div class="marquee">
+              <div class="marquee-content">
+                <img src="logo-3.jpg" />
+                <img
+                  src="logo-4.jpg"
+                />
+                <img src="logo-5.jpg" />
+                <img src="logo-6.jpg" />
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr height="100px">
+          <td colspan="3" style="text-align: center; padding: 30px" ;>
+            <h3 style="text-align: center">excellence tecnology</h3>
+            <a href="#">abcd@gmail.com</a><br />
+            <a href="#">contact us - 9876543122</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

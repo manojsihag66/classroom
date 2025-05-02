@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Result Status</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .container {
+        width: 400px;
+        height: 610px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      
+      .result {
+        background-color: grey;
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      
+      input[type="text"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+      }
+      
+      button {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      button:hover {
+        background-color: #3e8e41;
+      }
+      
+      #totalMarks, #percentage, #congratsMessage, #failedSubjects {
+        margin-bottom: 20px;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      
+      #congratsMessage {
+        background-color: rgb(72, 157, 72);
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="result">
+        Check Your Result Status
+      </h2>
+
+      <label for="hindi">Hindi</label>
+      <input type="text" id="hindi" value="78" />
+
+      <label for="english">English</label>
+      <input type="text" id="english" value="56" />
+
+      <label for="math">Math</label>
+      <input type="text" id="math" value="90" />
+
+      <label for="java">Java</label>
+      <input type="text" id="java" value="45" />
+
+      <label for="javascript">Javascript</label>
+      <input type="text" id="javascript" value="67" />
+      
+      <br>
+      <br>
+
+      <button onclick="calculateResult()">Calculate Result</button>
+      <br />
+      <br />
+      <div id="totalMarks"></div>
+      <div id="percentage"></div>
+      <div id="congratsMessage"></div>
+      <div id="failedSubjects"></div>
+    </div>
+
+    <script>
+      function calculateResult() {
+        let hindi = parseInt(document.getElementById("hindi").value);
+        let english = parseInt(document.getElementById("english").value);
+        let math = parseInt(document.getElementById("math").value);
+        let java = parseInt(document.getElementById("java").value);
+        let javascript = parseInt(document.getElementById("javascript").value);
+        let totalMarks = hindi + english + math + java + javascript;
+        let percentage = (totalMarks / 500) * 100;
+        document.getElementById("totalMarks").innerHTML = totalMarks;
+        document.getElementById("percentage").innerHTML = percentage.toFixed(2) + "%";
+        let totalMark = document.getElementById("totalMarks");
+        let percent = document.getElementById("percentage");
+        let congratsMessage = document.getElementById("congratsMessage");
+        totalMark.innerHTML = "Total Marks =" + totalMarks;
+        percent.innerHTML = "Percentage  =" + percentage.toFixed(2) + "%";
+        let failedSubjectsList = [];
+        if (hindi < 33) {
+          failedSubjectsList.push("Hindi");
+        }
+        if (english < 33) {
+          failedSubjectsList.push("English");
+        }
+        if (math < 33) {
+          failedSubjectsList.push("Math");
+        }
+        if (java < 33) {
+          failedSubjectsList.push("Java");
+        }
+        if (javascript < 33) {
+          failedSubjectsList.push("Javascript");
+        }
+
+        switch (true) {
+          case percentage >= 60:
+            congratsMessage.innerHTML =
+              "Congrats! You got first Division with " +
+              percentage.toFixed(2) +
+              "%";
+            break;
+          case percentage >= 50:
+            congratsMessage.innerHTML =
+              "Congrats! You got second Division with " +
+              percentage.toFixed(2) +
+              "%";
+            break;
+          case percentage >= 40:
+            congratsMessage.innerHTML =
+              "Congrats! You got third Division with " +
+              percentage.toFixed(2) +
+              "%";
+            break;
+          default:
+            congratsMessage.innerHTML = "You need to work harder!";
+        }
+        if (failedSubjectsList.length > 0) {
+          failedSubjects.innerHTML = "You failed in " + failedSubjectsList.join(", ");
+        } else {
+          failedSubjects.innerHTML = "You passed in all subjects!";
+        }
+      }
+    </script>
+  </body>
+</html>

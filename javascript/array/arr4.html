@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const arr = [14, 8, 12, 20, 60];
+        let largest =0;
+        for(let i=0;i<arr.length;i++){
+            if(arr[0] >largest){
+                largest = arr[i];
+            }
+            if(arr[arr.length -1] > largest){
+                largest = arr[arr.length -1];
+            }
+            
+        }
+        console.log(largest);
+
+
+        const arr1 = [20,120, 21, 14];
+        let max = 0;
+        for(let i=0;i<arr1.length;i++){
+            if(arr1[i]>max){
+                max = arr1[i];
+            }
+        }
+        console.log(`Max number is :${max}`);
+
+
+        const arr2 = [11, 3 , 14 , 10];
+        let min = arr[0];
+        for(let i=0;i<arr2.length;i++){
+            if(arr2[i]<min){
+                min = arr2[i];
+            }
+        }
+        console.log(`Minimum number is:${min}`);
+
+
+    </script>
+</body>
+</html>

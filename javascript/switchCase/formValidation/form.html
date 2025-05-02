@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <style>
+        .flx {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        #form {
+          width: 30%;
+          margin: 10px auto;
+          padding: 20px;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          background-color: #fff;
+        }
+        
+        #user, #pass, #conpass, #email, #mobile {
+          width: 75%;
+          height: 10px;
+          margin-bottom: 5px;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+        }
+        #userr, #passs, #conpasss, #emaill, #mobilee {
+        font-size: 12px;
+        color: red;
+      }
+      
+      input[type="submit"] {
+        width: 73%;
+        height: 30px;
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 1
+        0px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flx">
+        <div class="formd">
+            <center>
+                <form onsubmit="return validation()" id="form">
+                  <label for="user">Username</label><br />
+                  <input type="text" id="user" placeholder="Fill your username" autocomplete="off" /><br />
+                  <span id="userr" style="color: red; font-weight: bold"></span>
+                  <br /><br />
+                  <label for="pass">Password</label><br>
+                  <input type="text" id="pass" placeholder="Enter your Password" autocomplete="off"><br>
+                  <span id="passs" style="color: red; font-weight: 800;"></span>
+                  <br><br>
+                  <label for="conpass">Confirm Password</label><br>
+                  <input type="text" id="conpass" placeholder="Confirm your password"><br>
+                  <span id="conpasss" style="color: red; font-weight: 600;"></span>
+                  <br><br>
+                  <label for="email">Email</label><br>
+                  <input type="text" id="email" placeholder="Enter your email"><br>
+                  <span id="emaill" style="color: red; font-weight: 600;"></span>
+                  <br><br>
+                  <label for="mobile">Mobile No.</label><br>
+                  <input type="text" id="mobile" placeholder="Enter your mobile no."><br>
+                  <span id="mobilee" style="color: red; font-weight: 600;"></span>
+                  <br><br>
+
+
+
+                  <input type="submit" placeholder="">
+                </form>
+              </center>
+        </div>
+    <script>
+
+        function validation() {
+            let user = document.getElementById("user").value;
+            let pass = document.getElementById("pass").value;
+            let conpass = document.getElementById("conpass").value;
+            let email = document.getElementById("email").value;
+            let mobile = document.getElementById("mobile").value;
+
+
+            let userr = document.getElementById("userr").innerHTML='';
+            let passs = document.getElementById("passs").innerHTML='';
+            let conpasss = document.getElementById("conpasss").innerHTML='';
+            let emaill = document.getElementById("emaill").innerHTML = '';
+            let mobilee = document.getElementById("mobilee").innerHTML = '';
+
+            if(user === '') {
+                document.getElementById("userr").innerHTML = "Please fill your username";
+                return false;
+            }
+            if(user.length <=5 || user.length > 20) {
+                document.getElementById("userr").innerHTML = "**Username must between 5 and 20 character";
+                return false;
+            }
+          
+            if(isNaN(user)){
+                document.getElementById("userr").innerHTML = "Only character are allowed";
+                return false;
+            }
+            if(pass === ''){
+                document.getElementById("passs").innerHTML = "Please fill your password";
+                return false;
+            }
+            if(pass.length < 6){
+                document.getElementById("passs").innerHTML = "**Password must be less than 6 character";
+                return false;
+            }
+            if(pass !== conpass){
+                document.getElementById("conpasss").innerHTML = "**Password must be same";
+                return false;
+            }
+            if(conpass === ''){
+              document.getElementById("conpasss").innerHTML = "Please fill your confirm password";
+            }
+            
+            if(email.indexOf('@')<=0 || email.indexOf('@')=== email.length - 1){
+                document.getElementById("emaill").innerHTML = "Enter valid email";
+                return false;
+            }
+            if(email.charAt(email.length - 4) != '.' && email.charAt(email.length - 3) != '.'){
+              document.getElementById("emaill").innerHTML = ". invalid position";
+              return false;
+            }
+            if(mobile === ''){
+              document.getElementById("mobilee").innerHTML = "Please fill your mobile number";
+            }
+            if(mobile.length != 10){
+                document.getElementById("mobilee").innerHTML = "**Mobile number must be 10 digit";
+                return false;
+            }
+            if(isNaN(mobile)){
+                document.getElementById("mobilee").innerHTML = "**Mobile number must be digit";
+                return false;
+            }
+            
+        }
+    </script> 
+    </div>
+  </body>
+</html>
